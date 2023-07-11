@@ -1,5 +1,5 @@
 ---
-title: 'VampNet: Music Generation with Masked Transformers'
+title: "VampNet: Music Generation with Masked Transformers"
 emoji: 🤖
 colorFrom: gray
 colorTo: gray

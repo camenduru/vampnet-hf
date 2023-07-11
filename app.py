@@ -22,6 +22,7 @@ interface = Interface(
     coarse_ckpt="./models/vampnet/coarse.pth",
     coarse2fine_ckpt="./models/vampnet/c2f.pth",
     codec_ckpt="./models/vampnet/codec.pth",
+    wavebeat_ckpt="./models/wavebeat.pth",
     device="cuda" if torch.cuda.is_available() else "cpu",
 )
 
@@ -114,7 +115,7 @@ def _vamp(data, return_mask=False):
         z, 
         mask=mask,
         sampling_steps=data[num_steps],
-        temperature=data[temp]*10,
+        temperature=float(data[temp]*10),
         return_mask=True, 
         typical_filtering=data[typical_filtering], 
         typical_mass=data[typical_mass], 
@@ -186,9 +187,9 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         with gr.Column():
-            gr.Markdown("# VampNet Audio Vamping")
+            gr.Markdown("# VampNet")
             gr.Markdown("""## Description:
-            This is a demo of the VampNet, a generative audio model that transforms the input audio based on the chosen settings. 
+            This is a demo of VampNet, a masked generative music model capable of doing music variations. 
             You can control the extent and nature of variation with a set of manual controls and presets. 
             Use this interface to experiment with different mask settings and explore the audio outputs.
             """)
@@ -196,8 +197,8 @@ with gr.Blocks() as demo:
             gr.Markdown("""
             ## Instructions:
             1. You can start by uploading some audio, or by loading the example audio. 
-            2. Choose a preset for the vamp operation, or manually adjust the controls to customize the mask settings. 
-            3. Click the "generate (vamp)!!!" button to apply the vamp operation. Listen to the output audio.
+            2. Choose a preset for the vamp operation, or manually adjust the controls to customize the mask settings. Click the load preset button. 
+            3. Click the "generate (vamp)!!!" button to generate audio. Listen to the output audio, and the masked audio to hear the mask hints.
             4. Optionally, you can add some notes and save the result. 
             5. You can also use the output as the new input and continue experimenting!
             """)
@@ -248,12 +249,15 @@ with gr.Blocks() as demo:
                         "beat_mask_downbeats": False,
                     }, 
                     "slight periodic variation": {
+<<<<<<< HEAD
                         "periodic_p": 5,
                         "onset_mask_width": 5,
                         "beat_mask_width": 0,
                         "beat_mask_downbeats": False,
                     },
                     "moderate periodic variation": {
+=======
+>>>>>>> main
                         "periodic_p": 13,
                         "onset_mask_width": 5,
                         "beat_mask_width": 0,
@@ -274,14 +278,8 @@ with gr.Blocks() as demo:
                     "beat-driven variation": {
                         "periodic_p": 0,
                         "onset_mask_width": 0,
-                        "beat_mask_width": 50,
+                        "beat_mask_width": 20,
                         "beat_mask_downbeats": False,
-                    },
-                    "beat-driven variation (downbeats only)": {
-                        "periodic_p": 0,
-                        "onset_mask_width": 0,
-                        "beat_mask_width": 50,
-                        "beat_mask_downbeats": True,
                     },
                     "beat-driven variation (downbeats only, strong)": {
                         "periodic_p": 0,
@@ -304,7 +302,7 @@ with gr.Blocks() as demo:
                     minimum=0,
                     maximum=128, 
                     step=1,
-                    value=3, 
+                    value=13, 
                 )
 
 
@@ -392,7 +390,7 @@ with gr.Blocks() as demo:
                 label="temperature",
                 minimum=0.0,
                 maximum=10.0,
-                value=0.8
+                value=1.8
             )
 
 
