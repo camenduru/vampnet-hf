@@ -249,19 +249,19 @@ with gr.Blocks() as demo:
                         "beat_mask_downbeats": False,
                     }, 
                     "slight periodic variation": {
+                        "periodic_p": 7,
+                        "onset_mask_width": 0,
+                        "beat_mask_width": 0,
+                        "beat_mask_downbeats": False,
+                    },
+                    "strong periodic variation": {
                         "periodic_p": 13,
                         "onset_mask_width": 5,
                         "beat_mask_width": 0,
                         "beat_mask_downbeats": False,
                     },
-                    "strong periodic variation": {
-                        "periodic_p": 17,
-                        "onset_mask_width": 5,
-                        "beat_mask_width": 0,
-                        "beat_mask_downbeats": False,
-                    },
                     "very strong periodic variation": {
-                        "periodic_p": 21,
+                        "periodic_p": 17,
                         "onset_mask_width": 5,
                         "beat_mask_width": 0,
                         "beat_mask_downbeats": False,
