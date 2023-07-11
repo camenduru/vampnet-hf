@@ -249,15 +249,6 @@ with gr.Blocks() as demo:
                         "beat_mask_downbeats": False,
                     }, 
                     "slight periodic variation": {
-<<<<<<< HEAD
-                        "periodic_p": 5,
-                        "onset_mask_width": 5,
-                        "beat_mask_width": 0,
-                        "beat_mask_downbeats": False,
-                    },
-                    "moderate periodic variation": {
-=======
->>>>>>> main
                         "periodic_p": 13,
                         "onset_mask_width": 5,
                         "beat_mask_width": 0,
