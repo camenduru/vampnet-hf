@@ -497,4 +497,4 @@ with gr.Blocks() as demo:
         outputs=[thank_you, download_file]
     )
 
-demo.queue().launch()
+demo.queue().launch(share=True)
